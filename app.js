@@ -17,7 +17,6 @@ let toggle_btn = document.getElementById('access-button');
       })
 
 /* Js for FAQs toggle */
-
 let toggles = document.getElementsByClassName('toggle');
 let contentDiv = document.getElementsByClassName('answer');
 let icons = document.getElementsByClassName('icon');
@@ -47,4 +46,6 @@ for(let i=0; i<toggles.length; i++){
         }
     });
 }
+
+
 // aadit trying sth  
