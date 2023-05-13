@@ -6,8 +6,8 @@ let toggle_btn = document.getElementById('access-button');
 
         if(hidden){
            faqpage.style.display = "block";
-           hidden = false;
-        }
+           hidden = false
+}
         else{
             faqpage.style.display = "none";
             hidden = true;
@@ -47,5 +47,23 @@ for(let i=0; i<toggles.length; i++){
     });
 }
 
+// trying to make a new faq div for every coming from the api
 
-// aadit trying sth  
+fetch('http://localhost:3000/faqs')
+.then(response => response.json())
+.then(data =>  {
+    for (const faq of Object.values(data)) {
+        console.log(`Question: ${faq.question}`);
+        console.log(`Answer: ${faq.answer}`);
+      const container=document.querySelector('.message-content')
+      const wrapper=document.createElement('div')
+      wrapper.setAttribute('class','wrapper')
+      const toggle=document.createElement('button')
+      toggle.setAttribute('class','toggle')
+      const questionp=document.createElement("p")
+      questionp.setAttribute('class','question-p')
+      questionp.textContent=faq.question
+      container.appendChild(wrapper)
+      container.appendChild(toggle).appendChild(questionp)
+    
+        }})
