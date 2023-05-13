@@ -55,15 +55,27 @@ fetch('http://localhost:3000/faqs')
     for (const faq of Object.values(data)) {
         console.log(`Question: ${faq.question}`);
         console.log(`Answer: ${faq.answer}`);
-      const container=document.querySelector('.message-content')
-      const wrapper=document.createElement('div')
-      wrapper.setAttribute('class','wrapper')
-      const toggle=document.createElement('button')
-      toggle.setAttribute('class','toggle')
-      const questionp=document.createElement("p")
-      questionp.setAttribute('class','question-p')
-      questionp.textContent=faq.question
-      container.appendChild(wrapper)
-      container.appendChild(toggle).appendChild(questionp)
-    
-        }})
+        const container = document.querySelector('.message-content');
+        const wrapper = document.createElement('div');
+        wrapper.setAttribute('class', 'wrapper');
+        const toggle = document.createElement('button');
+        toggle.setAttribute('class', 'toggle');
+        const questionp = document.createElement('p');
+        questionp.setAttribute('class', 'question-p');
+        questionp.textContent = faq.question;
+        const questioni=document.createElement('i')
+        questioni.setAttribute('class','fa-solid fa-plus')
+        const answer=document.createElement('div')
+        answer.setAttribute('class','answer')
+        const answerp=document.createElement('p')
+        answerp.setAttribute('class','answer-p')
+        answerp.textContent=faq.answer
+        container.appendChild(wrapper);
+        wrapper.appendChild(toggle);
+        toggle.appendChild(questionp);
+        toggle.appendChild(questioni)
+        wrapper.appendChild(answer)
+        wrapper.appendChild(answerp)
+    }
+})
+
