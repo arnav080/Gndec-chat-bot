@@ -12,47 +12,43 @@ let toggle_btn = document.getElementById('access-button');
             faqpage.style.display = "none";
             hidden = true;
         }
-
-
       })
 
 /* Js for FAQs toggle */
-let toggles = document.getElementsByClassName('toggle');
-let contentDiv = document.getElementsByClassName('answer');
-let icons = document.getElementsByClassName('icon');
+function animate(){
+    let toggles = document.getElementsByClassName('toggle');
+    let contentDiv = document.getElementsByClassName('answer');
+    let icons = document.getElementsByClassName('icon');
 
-for(let i=0; i<toggles.length; i++){
-    toggles[i].addEventListener('click', ()=>{
-        if( parseInt(contentDiv[i].style.height) != contentDiv[i].scrollHeight){
-            contentDiv[i].style.height = contentDiv[i].scrollHeight + "px";
-            toggles[i].style.color = "#0084e9";
-            icons[i].classList.remove('fa-plus');
-            icons[i].classList.add('fa-minus');
-        }
-        else{
-            contentDiv[i].style.height = "0px";
-            toggles[i].style.color = "#111130";
-            icons[i].classList.remove('fa-minus');
-            icons[i].classList.add('fa-plus');
-        }
-
-        for(let j=0; j<contentDiv.length; j++){
-            if(j!==i){
-                contentDiv[j].style.height = "0px";
-                toggles[j].style.color = "#111130";
-                icons[j].classList.remove('fa-minus');
-                icons[j].classList.add('fa-plus');
+    for(let i=0; i<toggles.length; i++){
+        toggles[i].addEventListener('click', ()=>{
+            if( parseInt(contentDiv[i].style.height) != contentDiv[i].scrollHeight){
+                contentDiv[i].style.height = contentDiv[i].scrollHeight + "px";
+                icons[i].classList.remove('fa-plus');
+                icons[i].classList.add('fa-minus');
             }
-        }
-    });
-}
+            else{
+                contentDiv[i].style.height = "0px";
+                icons[i].classList.remove('fa-minus');
+                icons[i].classList.add('fa-plus');
+            }
 
+            for(let j=0; j<contentDiv.length; j++){
+                if(j!==i){
+                    contentDiv[j].style.height = "0px";
+                    icons[j].classList.remove('fa-minus');
+                    icons[j].classList.add('fa-plus');
+                }
+            }
+        });
+    }
+}
 // trying to make a new faq div for every coming from the api
 
-fetch('http://localhost:3000/faqs')
+fetch('http://localhost:5000/get-all')
 .then(response => response.json())
 .then(data =>  {
-    for (const faq of Object.values(data)) {
+    data.faqs.forEach(faq => {
         console.log(`Question: ${faq.question}`);
         console.log(`Answer: ${faq.answer}`);
         const container = document.querySelector('.message-content');
@@ -64,7 +60,7 @@ fetch('http://localhost:3000/faqs')
         questionp.setAttribute('class', 'question-p');
         questionp.textContent = faq.question;
         const questioni=document.createElement('i')
-        questioni.setAttribute('class','fa-solid fa-plus')
+        questioni.setAttribute('class','icon fa-solid fa-plus')
         const answer=document.createElement('div')
         answer.setAttribute('class','answer')
         const answerp=document.createElement('p')
@@ -74,8 +70,9 @@ fetch('http://localhost:3000/faqs')
         wrapper.appendChild(toggle);
         toggle.appendChild(questionp);
         toggle.appendChild(questioni)
+        answer.appendChild(answerp)
         wrapper.appendChild(answer)
-        wrapper.appendChild(answerp)
-    }
-})
+    })
+}).then(animate)
+
 

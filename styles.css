@@ -5,10 +5,11 @@
 }
 
 :root {
-    --primary-gradient: linear-gradient(#5f9ea0, #64a473, #68a854, #6fb112);
+    --primary-gradient: green;
     --bg-message: ;
-    --primary: ;
-    --secondary: ;
+    --tertiary: black;
+    --primary: lightgreen;
+    --secondary: darkgreen;
     --primary-boxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     --secondary-boxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
 }
@@ -55,24 +56,20 @@ body {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     align-items: center;
-    justify-content: center;
-    padding: 15px 20px;
+    justify-content: flex-start;
+    padding: 15px 25px 10px 25px;
     width: 100%;
     height: 100%;
 }
 
 .avatar {
-    width: 35px;
-    height: 35px;
-    margin-right: 10px;
+    width: 45px;
+    height: 45px;
+    margin-right: 5px;
 }
 
 .header-content h4 {
-    font-size: 1.2rem;
-}
-
-.header-content p {
-    font-size: 0.9rem;
+    font-size: 1.4rem;
 }
 
 .menu {
@@ -83,10 +80,24 @@ body {
 
 .messages {
     padding: 1.5rem 2rem;
-    background-color: white;
+    background-color: var(--secondary);
     height: 600px; /* 600 */
     width: 550px; /* 550 */
     overflow-y: scroll;
+}
+
+.messages p {
+    color: var(--tertiary);
+    line-height: 1.25;
+    text-align: left;
+}
+
+.question-p {
+    font-size: 16px !important;
+}
+
+.answer-p {
+    font-size: 14px !important;
 }
 
 .messages::-webkit-scrollbar {
@@ -117,10 +128,12 @@ body {
 
 .footer input {
     width: 75%;
+    height: 100%;
     border: none;
-    padding: 10px 10px;
+    padding: 15px 20px;
     border-radius: 30px;
     align-items: left;
+    font-size: 14px;
 }
 
 .footer button {
@@ -136,7 +149,7 @@ body {
 /* FAQs */
 
 .wrapper {
-    background-color: #64a473;
+    background-color: var(--primary);
     margin-bottom: 10px;
     padding: 15px 40px;
     border-radius: 5px;
@@ -164,6 +177,7 @@ body {
 }
 
 .answer{
+    color: var(--tertiary);
     position: relative;
     font-size: 1rem;
     text-align: justify;
@@ -173,7 +187,10 @@ body {
     transition: all 1s;
 }
 
-
+.send_button {
+    background-color: var(--secondary) !important;
+    border-radius: 20px;
+}
 
 /* Chat Bubble */
 
