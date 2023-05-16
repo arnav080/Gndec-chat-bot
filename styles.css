@@ -134,6 +134,7 @@ body {
     border-radius: 30px;
     align-items: left;
     font-size: 14px;
+    outline: none;
 }
 
 .footer button {
@@ -168,8 +169,11 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 5px 0;
-    
+    padding: 5px 5px;
+}
+
+.icon {
+    padding-left: 10px;
 }
 
 .toggle p {
@@ -276,16 +280,16 @@ body {
     }
 
     .header {
-        width: vw;
+        width: 30vw;
     }
     
     .messages {
-        width: 25vw;
+        width: 30vw;
         height: 60vh;
     }
 
     .footer {
-        width: 25vw;
+        width: 30vw;
     }  
 
     .question-p {
@@ -340,12 +344,12 @@ body {
     }
     
     .messages {
-        width: 30vw;
+        width: 25vw;
         height: 60vh;
     }
 
     .footer {
-        width: 30vw;
+        width: 25vw;
     }  
 
     .question-p {
@@ -355,7 +359,6 @@ body {
     .answer p {
         font-size: 20px;
     }
-
 
   }
 
